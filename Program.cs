@@ -2,6 +2,7 @@ using ChatGptApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var chatGptApiKey = builder.Configuration["ChatGptApi"];
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -9,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IChatGptService, ChatGptService>();
+
 
 var app = builder.Build();
 

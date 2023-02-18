@@ -9,13 +9,15 @@ public class ChatGptService : IChatGptService
 {
     private ILogger<ChatGptService> _logger;
     private OpenAIService gpt3;
+    private IConfiguration _config;
 
-    public ChatGptService(ILogger<ChatGptService> logger)
+    public ChatGptService(ILogger<ChatGptService> logger, IConfiguration config)
     {
         _logger = logger;
+        _config = config;
         gpt3 = new OpenAIService(new OpenAiOptions()
         {
-            ApiKey = ""
+            ApiKey = _config["ChatGptApi"]
         });       
     }
 
